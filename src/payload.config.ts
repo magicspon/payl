@@ -47,7 +47,8 @@ export default buildConfig({
         return doc?.excerpt?.value ?? ''
       },
       generateURL: ({ doc }) => {
-        console.log({ doc })
+        // const d = doc
+
         return ''
       },
       tabbedUI: false,
