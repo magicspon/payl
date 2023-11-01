@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      # Accessible from the host at port :35432
+      - '35434:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    # Make sure log colors show up correctly
+    tty: true
+
+volumes:
+  data:
+  node_modules:
