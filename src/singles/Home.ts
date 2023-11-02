@@ -4,7 +4,7 @@ import { RichText } from '../fields/RichText'
 const Home: GlobalConfig = {
   slug: 'home',
   admin: {
-    group: 'singles',
+    group: 'Company',
   },
 
   fields: [

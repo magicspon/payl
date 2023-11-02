@@ -3,7 +3,7 @@ import { GlobalConfig } from 'payload/types'
 const About: GlobalConfig = {
   slug: 'about',
   admin: {
-    group: 'singles',
+    group: 'Company',
   },
   fields: [
     {

@@ -4,7 +4,7 @@ import { RichText } from '../fields/RichText'
 const Seo: GlobalConfig = {
   slug: 'seo',
   admin: {
-    group: 'settings',
+    group: 'Settings',
   },
   fields: [
     {

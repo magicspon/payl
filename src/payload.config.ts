@@ -13,6 +13,8 @@ import Home from './singles/Home'
 import Seo from './globals/Seo'
 import About from './singles/About'
 import Pages from './collections/Pages'
+import { seed } from './seed'
+import { Teams } from './collections/Teams'
 
 export default buildConfig({
   admin: {
@@ -20,7 +22,7 @@ export default buildConfig({
     bundler: webpackBundler(),
   },
   editor: lexicalEditor({}),
-  collections: [Pages, Users],
+  collections: [Pages, Users, Teams],
   globals: [Home, About, Seo],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
@@ -38,7 +40,7 @@ export default buildConfig({
         docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
     }),
     seo({
-      globals: ['about'],
+      globals: ['about', 'seo'],
       collections: ['pages'],
       // @ts-ignore this is fine
       generateTitle: ({ doc }) => `Hello | ${doc?.title?.value}`,
@@ -59,4 +61,11 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI,
     },
   }),
+
+  onInit: async (payload) => {
+    // If the `env` var `PAYLOAD_SEED` is set, seed the db
+    if (process.env.PAYLOAD_SEED) {
+      await seed(payload)
+    }
+  },
 })
